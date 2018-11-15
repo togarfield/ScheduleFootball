@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txt_home_team" type="id" />
+    <item name="txt_time_match" type="id" />
+    <item name="txt_away_team" type="id" />
+    <item name="txt_score_home" type="id" />
+    <item name="txt_score_away" type="id" />
+    <item name="pbLastEvent" type="id" />
+    <item name="swipeRefresh" type="id" />
+    <item name="linearDetail" type="id" />
+    <item name="pbNextEvent" type="id" />
+    <item name="pbDetail" type="id" />
+</resources>
