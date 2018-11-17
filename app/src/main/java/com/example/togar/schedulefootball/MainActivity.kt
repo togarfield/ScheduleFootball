@@ -1,10 +1,9 @@
 package com.example.togar.schedulefootball
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.view.ViewPager
 import android.support.design.widget.TabLayout
-import android.support.v7.widget.Toolbar
+import android.support.v4.view.ViewPager
+import android.support.v7.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initToolbar()
+//        initToolbar()
 
         val tabLayout: TabLayout = findViewById(R.id.tab_layout)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
@@ -36,9 +35,9 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun initToolbar() {
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-    }
+//    private fun initToolbar() {
+//        val toolbar: Toolbar = findViewById(R.id.toolbar)
+//        setSupportActionBar(toolbar)
+//    }
 
 }

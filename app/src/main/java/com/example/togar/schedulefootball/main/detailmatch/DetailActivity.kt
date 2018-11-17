@@ -139,343 +139,349 @@ class DetailActivity: AppCompatActivity(), DetailView {
     }
 
     private fun initView(){
-        swipeRefresh = swipeRefreshLayout{
-            scrollView {
-                lparams(width = matchParent, height = matchParent)
-                backgroundColor = Color.WHITE
-                relativeLayout {
-                    supportActionBar?.title = "Team Detail"
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        linearLayout {
+            supportActionBar?.title = "Team Detail"
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            lparams(width = matchParent, height = wrapContent)
+            orientation = LinearLayout.VERTICAL
+            backgroundColor = Color.WHITE
+
+            swipeRefresh = swipeRefreshLayout {
+                scrollView {
                     lparams(width = matchParent, height = matchParent)
-                    linearDetail = linearLayout {
-                        id = R.id.linearDetail
+                    backgroundColor = Color.WHITE
+                    relativeLayout {
                         lparams(width = matchParent, height = matchParent)
-                        orientation = LinearLayout.VERTICAL
-                        gravity = Gravity.CENTER
-                        padding = dip(15)
-
-                        txtDateMatch = textView {
+                        linearDetail = linearLayout {
+                            id = R.id.linearDetail
+                            lparams(width = matchParent, height = matchParent)
+                            orientation = LinearLayout.VERTICAL
                             gravity = Gravity.CENTER
-                            textColor = colorPrimary
-                            textSize = 20F
-                            setTypeface(null, Typeface.BOLD)
-                        }.lparams(width = wrapContent, height = wrapContent)
+                            padding = dip(15)
 
-                        //Tampilan Foto dan Score
-                        linearLayout {
-                            orientation = LinearLayout.HORIZONTAL
-                            gravity = Gravity.CENTER
-                            lparams(width = matchParent, height = wrapContent) {
-                                topMargin = dip(10)
-                            }
-
-                            imageHome = imageView().lparams(width = dip(75), height = dip(75)) {
+                            txtDateMatch = textView {
                                 gravity = Gravity.CENTER
-                                weight = 1F
-                            }
-
-                            txtScoreHome = textView {
-                                gravity = Gravity.CENTER
-                                textSize = 30F
-                            }.lparams(width = wrapContent, height = wrapContent) {
-                                weight = 1F
-                            }
-
-                            textView {
-                                gravity = Gravity.CENTER
+                                textColor = colorPrimary
                                 textSize = 20F
-                                text = "VS"
-                            }.lparams(width = wrapContent, height = wrapContent) {
-                                weight = 1F
-                            }
+                                setTypeface(null, Typeface.BOLD)
+                            }.lparams(width = wrapContent, height = wrapContent)
 
-                            txtScoreAway = textView {
+                            //Tampilan Foto dan Score
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
                                 gravity = Gravity.CENTER
-                                textSize = 30F
-                            }.lparams(width = wrapContent, height = wrapContent) {
-                                weight = 1F
+                                lparams(width = matchParent, height = wrapContent) {
+                                    topMargin = dip(10)
+                                }
+
+                                imageHome = imageView().lparams(width = dip(75), height = dip(75)) {
+                                    gravity = Gravity.CENTER
+                                    weight = 1F
+                                }
+
+                                txtScoreHome = textView {
+                                    gravity = Gravity.CENTER
+                                    textSize = 30F
+                                }.lparams(width = wrapContent, height = wrapContent) {
+                                    weight = 1F
+                                }
+
+                                textView {
+                                    gravity = Gravity.CENTER
+                                    textSize = 20F
+                                    text = "VS"
+                                }.lparams(width = wrapContent, height = wrapContent) {
+                                    weight = 1F
+                                }
+
+                                txtScoreAway = textView {
+                                    gravity = Gravity.CENTER
+                                    textSize = 30F
+                                }.lparams(width = wrapContent, height = wrapContent) {
+                                    weight = 1F
+                                }
+
+                                imageAway = imageView().lparams(width = dip(75), height = dip(75)) {
+                                    gravity = Gravity.CENTER
+                                    weight = 1F
+                                }
                             }
 
-                            imageAway = imageView().lparams(width = dip(75), height = dip(75)) {
+                            //nama team
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
                                 gravity = Gravity.CENTER
-                                weight = 1F
-                            }
-                        }
+                                lparams(width = matchParent, height = wrapContent) {
+                                    topMargin = dip(10)
+                                }
 
-                        //nama team
-                        linearLayout {
-                            orientation = LinearLayout.HORIZONTAL
-                            gravity = Gravity.CENTER
-                            lparams(width = matchParent, height = wrapContent) {
-                                topMargin = dip(10)
-                            }
+                                txtNameHome = textView {
+                                    gravity = Gravity.START
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    leftMargin = dip(15)
+                                    weight = 1F
+                                }
 
-                            txtNameHome = textView {
-                                gravity = Gravity.START
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                leftMargin = dip(15)
-                                weight = 1F
-                            }
-
-                            txtNameAway = textView {
-                                gravity = Gravity.END
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                rightMargin = dip(15)
-                                weight = 1F
-                            }
-                        }
-
-                        view {
-                            backgroundColorResource = android.R.color.darker_gray
-                        }.lparams(width = matchParent, height = dip(1)) {
-                            topMargin = dip(20)
-                        }
-
-                        //goals
-                        linearLayout {
-                            orientation = LinearLayout.HORIZONTAL
-                            gravity = Gravity.CENTER
-                            lparams(width = matchParent, height = wrapContent) {
-                                topMargin = dip(10)
+                                txtNameAway = textView {
+                                    gravity = Gravity.END
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    rightMargin = dip(15)
+                                    weight = 1F
+                                }
                             }
 
-                            txtGoalsHome = textView {
-                                gravity = Gravity.START
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                leftMargin = dip(15)
-                                weight = 1F
+                            view {
+                                backgroundColorResource = android.R.color.darker_gray
+                            }.lparams(width = matchParent, height = dip(1)) {
+                                topMargin = dip(20)
+                            }
+
+                            //goals
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
+                                gravity = Gravity.CENTER
+                                lparams(width = matchParent, height = wrapContent) {
+                                    topMargin = dip(10)
+                                }
+
+                                txtGoalsHome = textView {
+                                    gravity = Gravity.START
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    leftMargin = dip(15)
+                                    weight = 1F
+                                }
+
+                                textView {
+                                    gravity = Gravity.CENTER
+                                    textSize = 12F
+                                    text = "Goals"
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    weight = 1F
+                                }
+
+                                txtGoalsAway = textView {
+                                    gravity = Gravity.END
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    rightMargin = dip(15)
+                                    weight = 1F
+                                }
+                            }
+
+                            //scores
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
+                                gravity = Gravity.CENTER
+                                lparams(width = matchParent, height = wrapContent) {
+                                    topMargin = dip(10)
+                                }
+
+                                txtNameScoreHome = textView {
+                                    gravity = Gravity.START
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    leftMargin = dip(15)
+                                    weight = 1F
+                                }
+
+                                textView {
+                                    gravity = Gravity.CENTER
+                                    textSize = 12F
+                                    text = "Shoots"
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    weight = 1F
+                                }
+
+                                txtNameScoreAway = textView {
+                                    gravity = Gravity.END
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    rightMargin = dip(15)
+                                    weight = 1F
+                                }
+                            }
+
+                            view {
+                                backgroundColorResource = android.R.color.darker_gray
+                            }.lparams(width = matchParent, height = dip(1)) {
+                                topMargin = dip(5)
+                                bottomMargin = dip(10)
                             }
 
                             textView {
                                 gravity = Gravity.CENTER
                                 textSize = 12F
-                                text = "Goals"
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                weight = 1F
-                            }
+                                text = "Lineups"
+                            }.lparams(width = matchParent, height = wrapContent)
 
-                            txtGoalsAway = textView {
-                                gravity = Gravity.END
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                rightMargin = dip(15)
-                                weight = 1F
-                            }
-                        }
-
-                        //scores
-                        linearLayout {
-                            orientation = LinearLayout.HORIZONTAL
-                            gravity = Gravity.CENTER
-                            lparams(width = matchParent, height = wrapContent) {
-                                topMargin = dip(10)
-                            }
-
-                            txtNameScoreHome = textView {
-                                gravity = Gravity.START
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                leftMargin = dip(15)
-                                weight = 1F
-                            }
-
-                            textView {
+                            //kiper
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
                                 gravity = Gravity.CENTER
-                                textSize = 12F
-                                text = "Shoots"
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                weight = 1F
+                                lparams(width = matchParent, height = wrapContent) {
+                                    topMargin = dip(10)
+                                }
+
+                                txtKeeperHome = textView {
+                                    gravity = Gravity.START
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    leftMargin = dip(15)
+                                    weight = 1F
+                                }
+
+                                textView {
+                                    gravity = Gravity.CENTER
+                                    textSize = 12F
+                                    text = "Goal Keeper"
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    weight = 1F
+                                }
+
+                                txtKeeperAway = textView {
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    rightMargin = dip(15)
+                                    weight = 1F
+                                }
                             }
 
-                            txtNameScoreAway = textView {
-                                gravity = Gravity.END
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                rightMargin = dip(15)
-                                weight = 1F
-                            }
-                        }
-
-                        view {
-                            backgroundColorResource = android.R.color.darker_gray
-                        }.lparams(width = matchParent, height = dip(1)) {
-                            topMargin = dip(5)
-                            bottomMargin = dip(10)
-                        }
-
-                        textView {
-                            gravity = Gravity.CENTER
-                            textSize = 12F
-                            text = "Lineups"
-                        }.lparams(width = matchParent, height = wrapContent)
-
-                        //kiper
-                        linearLayout {
-                            orientation = LinearLayout.HORIZONTAL
-                            gravity = Gravity.CENTER
-                            lparams(width = matchParent, height = wrapContent) {
-                                topMargin = dip(10)
-                            }
-
-                            txtKeeperHome = textView {
-                                gravity = Gravity.START
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                leftMargin = dip(15)
-                                weight = 1F
-                            }
-
-                            textView {
+                            //bek
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
                                 gravity = Gravity.CENTER
-                                textSize = 12F
-                                text = "Goal Keeper"
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                weight = 1F
+                                lparams(width = matchParent, height = wrapContent) {
+                                    topMargin = dip(10)
+                                }
+
+                                txtDefenceHome = textView {
+                                    gravity = Gravity.START
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    leftMargin = dip(15)
+                                    weight = 1F
+                                }
+
+                                textView {
+                                    gravity = Gravity.CENTER
+                                    textSize = 12F
+                                    text = "Defence"
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    weight = 1F
+                                }
+
+                                txtDefenceAway = textView {
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    rightMargin = dip(15)
+                                    weight = 1F
+                                }
                             }
 
-                            txtKeeperAway = textView {
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                rightMargin = dip(15)
-                                weight = 1F
-                            }
-                        }
-
-                        //bek
-                        linearLayout {
-                            orientation = LinearLayout.HORIZONTAL
-                            gravity = Gravity.CENTER
-                            lparams(width = matchParent, height = wrapContent) {
-                                topMargin = dip(10)
-                            }
-
-                            txtDefenceHome = textView {
-                                gravity = Gravity.START
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                leftMargin = dip(15)
-                                weight = 1F
-                            }
-
-                            textView {
+                            //tengah
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
                                 gravity = Gravity.CENTER
-                                textSize = 12F
-                                text = "Defence"
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                weight = 1F
+                                lparams(width = matchParent, height = wrapContent) {
+                                    topMargin = dip(10)
+                                }
+
+                                txtMidfieldHome = textView {
+                                    gravity = Gravity.START
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    leftMargin = dip(15)
+                                    weight = 1F
+                                }
+
+                                textView {
+                                    gravity = Gravity.CENTER
+                                    textSize = 12F
+                                    text = "Midfield"
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    weight = 1F
+                                }
+
+                                txtMidfieldAway = textView {
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    rightMargin = dip(15)
+                                    weight = 1F
+                                }
                             }
 
-                            txtDefenceAway = textView {
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                rightMargin = dip(15)
-                                weight = 1F
-                            }
-                        }
-
-                        //tengah
-                        linearLayout {
-                            orientation = LinearLayout.HORIZONTAL
-                            gravity = Gravity.CENTER
-                            lparams(width = matchParent, height = wrapContent) {
-                                topMargin = dip(10)
-                            }
-
-                            txtMidfieldHome = textView {
-                                gravity = Gravity.START
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                leftMargin = dip(15)
-                                weight = 1F
-                            }
-
-                            textView {
+                            //penyerang
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
                                 gravity = Gravity.CENTER
-                                textSize = 12F
-                                text = "Midfield"
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                weight = 1F
+                                lparams(width = matchParent, height = wrapContent) {
+                                    topMargin = dip(10)
+                                }
+
+                                txtForwardHome = textView {
+                                    gravity = Gravity.START
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    leftMargin = dip(15)
+                                    weight = 1F
+                                }
+
+                                textView {
+                                    gravity = Gravity.CENTER
+                                    textSize = 12F
+                                    text = "Forward"
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    weight = 1F
+                                }
+
+                                txtForwardAway = textView {
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    rightMargin = dip(15)
+                                    weight = 1F
+                                }
                             }
 
-                            txtMidfieldAway = textView {
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                rightMargin = dip(15)
-                                weight = 1F
-                            }
-                        }
-
-                        //penyerang
-                        linearLayout {
-                            orientation = LinearLayout.HORIZONTAL
-                            gravity = Gravity.CENTER
-                            lparams(width = matchParent, height = wrapContent) {
-                                topMargin = dip(10)
-                            }
-
-                            txtForwardHome = textView {
-                                gravity = Gravity.START
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                leftMargin = dip(15)
-                                weight = 1F
-                            }
-
-                            textView {
+                            //penyerang
+                            linearLayout {
+                                orientation = LinearLayout.HORIZONTAL
                                 gravity = Gravity.CENTER
-                                textSize = 12F
-                                text = "Forward"
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                weight = 1F
-                            }
+                                lparams(width = matchParent, height = wrapContent) {
+                                    topMargin = dip(10)
+                                }
 
-                            txtForwardAway = textView {
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                rightMargin = dip(15)
-                                weight = 1F
+                                txtHomeSubstitutes = textView {
+                                    gravity = Gravity.START
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    leftMargin = dip(15)
+                                    weight = 1F
+                                }
+
+                                textView {
+                                    gravity = Gravity.CENTER
+                                    textSize = 12F
+                                    text = "Substitutes"
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    weight = 1F
+                                }
+
+                                txtAwaySubstitutes = textView {
+                                    textSize = 16F
+                                }.lparams(width = matchParent, height = wrapContent) {
+                                    rightMargin = dip(15)
+                                    weight = 1F
+                                }
                             }
                         }
-
-                        //penyerang
-                        linearLayout {
-                            orientation = LinearLayout.HORIZONTAL
-                            gravity = Gravity.CENTER
-                            lparams(width = matchParent, height = wrapContent) {
-                                topMargin = dip(10)
-                            }
-
-                            txtHomeSubstitutes = textView {
-                                gravity = Gravity.START
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                leftMargin = dip(15)
-                                weight = 1F
-                            }
-
-                            textView {
-                                gravity = Gravity.CENTER
-                                textSize = 12F
-                                text = "Substitutes"
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                weight = 1F
-                            }
-
-                            txtAwaySubstitutes = textView {
-                                textSize = 16F
-                            }.lparams(width = matchParent, height = wrapContent) {
-                                rightMargin = dip(15)
-                                weight = 1F
-                            }
+                        progressBar = progressBar {
+                            id = R.id.pbDetail
+                        }.lparams {
+                            centerInParent()
                         }
-                    }
-                    progressBar = progressBar {
-                        id = R.id.pbDetail
-                    }.lparams{
-                        centerInParent()
                     }
                 }
             }
@@ -507,8 +513,8 @@ class DetailActivity: AppCompatActivity(), DetailView {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
             android.R.id.home -> {
                 finish()
                 true
@@ -518,6 +524,7 @@ class DetailActivity: AppCompatActivity(), DetailView {
 
                 isFavorite = !isFavorite
                 setFavorite()
+
                 true
             }
 
