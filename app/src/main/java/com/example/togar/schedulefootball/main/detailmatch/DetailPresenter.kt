@@ -4,16 +4,19 @@ import com.example.togar.schedulefootball.api.ApiRepository
 import com.example.togar.schedulefootball.api.TheSportDBApi
 import com.example.togar.schedulefootball.model.EventResponse
 import com.example.togar.schedulefootball.model.TeamResponse
+import com.example.togar.schedulefootball.utils.CoroutineContextProvider
 import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 class DetailPresenter (private val view: DetailView,
                        private val apiRepository: ApiRepository,
-                       private val gson: Gson){
+                       private val gson: Gson,
+                       private val context: CoroutineContextProvider = CoroutineContextProvider()){
 
     fun getMatchDetail(idEvent: String?, idHomeTeam: String?, idAwayTeam: String?) {
         view.showLoading()
+
         doAsync {
             val detailMatch = gson.fromJson(apiRepository.doRequest(TheSportDBApi.getDetailMatch(idEvent)),
                     EventResponse::class.java)

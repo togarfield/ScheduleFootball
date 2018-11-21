@@ -8,7 +8,7 @@ import com.example.togar.schedulefootball.FootballMatchLayout
 import com.example.togar.schedulefootball.R
 import com.example.togar.schedulefootball.data.Favorite
 import org.jetbrains.anko.AnkoContext
-import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.sdk27.coroutines.onClick
 import java.text.SimpleDateFormat
 import java.util.*
 

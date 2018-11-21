@@ -3,13 +3,15 @@ package com.example.togar.schedulefootball.main.lastmatch
 import com.example.togar.schedulefootball.api.ApiRepository
 import com.example.togar.schedulefootball.api.TheSportDBApi
 import com.example.togar.schedulefootball.model.EventResponse
+import com.example.togar.schedulefootball.utils.CoroutineContextProvider
 import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 class LastMatchPresenter( private val view: LastMatchView,
                           private val apiRepository: ApiRepository,
-                          private val gson: Gson) {
+                          private val gson: Gson,
+                          private val context: CoroutineContextProvider = CoroutineContextProvider()) {
 
     fun getLastTeamList(match: String?) {
         view.showLoading()
